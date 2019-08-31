@@ -41,7 +41,7 @@ int main()
                 printf("    >=20 |");
             else 
                 printf("%8d |", i + 1);
-            currentsize = ( tab[i] * 1.0 / max * 1.0 ) * HISTSIZE;
+            currentsize = ( tab[i] * HISTSIZE / max );
             for(int j = 0; j < HISTSIZE; ++j)
             {
                 if (j < currentsize)

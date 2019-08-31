@@ -24,7 +24,7 @@ int main()
         for (int i = 0; i < ARRAYSIZE; ++i)
         {
             printf("%4c |", i + ' ' );
-            currentsize = ( tab[i] * 1.0 / max * 1.0 ) * HISTSIZE;
+            currentsize = ( tab[i] * HISTSIZE / max );
             for(int j = 0; j < HISTSIZE; ++j)
             {
                 if (j < currentsize)
