@@ -37,9 +37,7 @@ int main()
         printf("D. SLOWA\n");
         for (int i = 0; i < MAXWORD; ++i)
         {
-            if ( i == 0 )
-            
-            else if ( i == MAXWORD - 1 )
+            if (i == (MAXWORD - 1))
                 printf("    >=20 |");
             else 
                 printf("%8d |", i + 1);
