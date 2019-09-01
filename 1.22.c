@@ -42,10 +42,10 @@ int getLine(char line[], int lim)
 			line[i] = c;
 		++i;
 	}
-	if (i < MAXLINE)
+	if (i < lim)
 		line[i] = '\0';
 	else
-		line[MAXLINE - 1] = '\0';
+		line[lim - 1] = '\0';
 	return i;
 }
 
