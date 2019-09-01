@@ -2,22 +2,26 @@
 
 #define MAXLINE 1000
 #define N 30
+#define TABSIZE 8
 
 int getLine(char line[], int lim);
 int sizeLine(char line[]);
 int findBeforeN(char line[], int n);
 void cutLine(char line[], char line1[], char line2[], int n);
 int deleteBlank(char to[], char from[]);
+void deTab(char to[], char from[]);
 
 int main()
 {
 	int line_size;
+	char rawline[MAXLINE];
 	char line[MAXLINE];
 	char line1[MAXLINE];
 	char line2[MAXLINE];
 	int pos;
-	while ((getLine(line, MAXLINE)) != 0)
+	while ((getLine(rawline, MAXLINE)) != 0)
 	{
+		deTab(line, rawline);
 		while (sizeLine(line) > 0)
 		{
 			pos = findBeforeN(line, N);
@@ -94,6 +98,35 @@ int deleteBlank(char to[], char from[])
 int sizeLine(char line[])
 {
 	int i;
-	for (i = 0; line[i] != '\0'; ++i);
+	for (i = 0; line[i] != '\0'; ++i)
+		;
 	return i;
+}
+
+void deTab(char to[], char from[])
+{
+	int i, j, pos, toadd;
+	i = j = pos = 0;
+	while (from[i] != '\0')
+	{
+		if (pos > TABSIZE - 1)
+			pos = 0;
+		if (from[i] == '\t')
+		{
+			toadd = TABSIZE - pos;
+			int k;
+			for (k = 0; k < toadd; ++k)
+				to[j + k] = ' ';
+			j = j + k - 1;
+			pos = 0;
+		}
+		else
+		{
+			to[j] = from[i];
+			++pos;
+		}
+		++i;
+		++j;
+	}
+	to[j] = '\0';
 }
