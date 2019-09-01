@@ -27,7 +27,7 @@ int main()
 			pos = findBeforeN(line, N);
 			cutLine(line, line1, line2, pos);
 			deleteBlank(line, line2);
-			if(sizeLine(line1) > 0)
+			if (sizeLine(line1) > 0)
 				printf("%s", line1);
 		}
 	}
