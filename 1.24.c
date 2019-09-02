@@ -1,9 +1,5 @@
 #include <stdio.h>
 
-void skipQuote(int c);
-void skipLineComment();
-void skipComment();
-
 #define SEARCH         \
     if (c == '{')      \
         ++brace;       \
@@ -17,6 +13,10 @@ void skipComment();
         ++paren;       \
     else if (c == ')') \
         --paren;
+
+void skipQuote(int c);
+void skipLineComment();
+void skipComment();
 
 int main()
 {
