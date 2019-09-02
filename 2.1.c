@@ -39,6 +39,7 @@ int main()
     printf("%22lu%22lu \tunsigned long int min\n",uli, 0UL);
     printf("%22lu%22lu \tunsigned long int max\n",--uli, ULONG_MAX);
     
+    sli = uli / 2;
     while (sli > 0)
         ++sli;
     printf("%22ld%22ld \tsigned long int min\n",sli, LONG_MIN);
