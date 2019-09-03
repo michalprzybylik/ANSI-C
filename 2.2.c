@@ -1,27 +1,32 @@
+#include<stdio.h>
+
 #define LIMIT 10
 
-int expr=1;
-int lim = LIMIT;
-int i = 0;
-char s[LIMIT];
-
-while(expr)
+int main()
 {
-	if(i<lim-2)
+	int expr = 1;
+	int lim = LIMIT;
+	char c;
+	char s[LIMIT];
+	int i = 0;
+	while (expr)
 	{
-		if((c=getchar()) != '\n')
+		if (i < lim - 2)
 		{
-			if(c!=EOF)
+			if ((c = getchar()) != '\n')
 			{
-				s[i]=c;
-				++i;
+				if (c != EOF)
+				{
+					s[i] = c;
+					++i;
+				}
+				else
+					expr = 0;
 			}
 			else
-				expr=0;
+				expr = 0;
 		}
 		else
-			expr=0;
+			expr = 0;
 	}
-	else
-		expr=0;
 }
