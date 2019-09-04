@@ -31,9 +31,9 @@ int main()
 
 long int htoi(char s[])
 {
-    int i = 0;
+    int i;
     long int h = 0;
-    for (; s[i] != '\0'; ++i)
+    for (i = 0; s[i] != '\0'; ++i)
     {
         if (i == 0 && s[i] == '0' && (s[i + 1] == 'x' || s[i + 1] == 'X'))
             i += 2;
