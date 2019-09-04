@@ -49,7 +49,10 @@ long int htoi(char s[])
     return h;
 }
 
-//Funkcja z obsluga znakow +- jej wada jest to ze gdy wystepuje blad danych wejsciowych trzeba zwrocic jakac wartosc z zakresu poprawnych wartosci (-1L)
+//Funkcja z obsluga znakow +- jej wada jest to ze gdy wystepuje blad danych wejsciowych
+//trzeba zwrocic wartosc wszystkie wartosci z zakresu typu unsigned int moga byc zwrocone
+//jako poprawny wynik stad nie ma mozliwosci sygnalizowania blednych danych wejscowych przy 
+//pomocy zwracanej wartosci(-1L)
 /*
 long int htoi(char s[])
 {
@@ -74,7 +77,10 @@ long int htoi(char s[])
         else if (s[i] >= 'A' && s[i] <= 'F')
             h = 16 * h + s[i] - 'A' + 10;
         else if (s[i] != '\0')
+        {
+            printf("To nie jest liczba szesnastkowa");
             return -1L;
+        }
     }
     return sign * h;
 }
