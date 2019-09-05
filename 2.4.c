@@ -4,8 +4,8 @@ void squezze(char s1[], char s2[]);
 
 int main()
 {
-	char string1[] = "abwefmwqwmei  qqrqbac";
-	char string2[] = "bc";
+	char string1[] = "abwefmwqwmeiqqrqbac";
+	char string2[] = "mew";
 	squezze(string1, string2);
 	printf("%s\n", string1);
 	return 0;
