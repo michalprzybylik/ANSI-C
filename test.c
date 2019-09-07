@@ -1,13 +1,13 @@
 #include<stdio.h>
 
-float a();
 int main()
 {
-    printf("%d",a(1.0));
+    //a = a++;
+    printf("%d",ab(1.0));
     return 0;
 }
 
-float a(int b)
+ab(float b)
 {
     return b++;
 }
