@@ -1,13 +1,14 @@
 #include<stdio.h>
 
+a;
 int main()
 {
     //a = a++;
-    printf("%d",ab(1.0));
+    printf("%d",ab(a));
     return 0;
 }
 
-ab(float b)
+ab(a)
 {
-    return b++;
+    return ++a;
 }
