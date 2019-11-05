@@ -6,7 +6,7 @@ int strindex(char source[], char searchfor[]);
 int mystrlen(char str[]);
 int strrindex(char source[], char searchfor[]);
 
-char pattern[] = "";
+char pattern[] = "a";
 
 int main(void)
 {
