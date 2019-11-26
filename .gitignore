@@ -1,3 +1,4 @@
 *.out
 .DSStore
 test.c
+.vscode
