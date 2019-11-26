@@ -2,3 +2,4 @@
 .DSStore
 test.c
 .vscode
+!*.c
