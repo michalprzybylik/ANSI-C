@@ -8,7 +8,7 @@
 int getop(char s[]);
 void push(double f);
 double pop(void);
-double mod(double a, double b);
+double primitive_mod(double a, double b);
 
 int main(void)
 {
@@ -81,7 +81,7 @@ double pop(void)
     }
 }
 
-double mod(double a, double b)
+double primitive_mod(double a, double b)
 {
     if (a >= 0 && b > 0)
     {
