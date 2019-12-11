@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 #define MAXOP 100
 #define NUMBER '0'
@@ -42,7 +43,7 @@ int main(void)
         case '%':
             op2 = pop();
             if (op2 != 0.0)
-                push(mod(pop(),op2));
+                push(fmod(pop(),op2));
             else
                 printf("Blad: dzielenie przez 0\n");
             break;
