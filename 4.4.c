@@ -53,6 +53,15 @@ int main(void)
         case '\n':
             printf("\t%.8g\n", pop());
             break;
+        case '?':
+            printf("\t%.8g\n",top());
+            break;
+        case 'c':
+            clear();
+            break;
+        case 's':
+            swap();
+            break;
         default:
             printf("Blad: nieznane polecenie %s\n", s);
             break;
