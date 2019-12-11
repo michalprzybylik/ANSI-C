@@ -46,7 +46,7 @@ int main(void)
         case '%':
             op2 = pop();
             if (op2 != 0.0)
-                push(fmod(pop(),op2));
+                push(fmod(pop(), op2));
             else
                 printf("Blad: dzielenie przez 0\n");
             break;
@@ -54,7 +54,7 @@ int main(void)
             printf("\t%.8g\n", pop());
             break;
         case '?':
-            printf("\t%.8g\n",top());
+            printf("\t%.8g\n", top());
             break;
         case 'c':
             clear();
@@ -101,7 +101,7 @@ double top(void)
     {
         printf("Blad: pusty stos\n");
         return 0.0;
-    }   
+    }
 }
 
 void swap(void)
@@ -118,7 +118,7 @@ void swap(void)
     {
         printf("Blad: Na stosie znajduje sie za malo zmiennych\n");
         return 0.0;
-    }   
+    }
 }
 
 void clear(void)
