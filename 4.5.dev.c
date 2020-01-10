@@ -115,7 +115,10 @@ void swap(void)
         push(next);
     }
     else
+    {
         printf("Blad: Na stosie znajduje sie za malo zmiennych\n");
+        return 0.0;
+    }
 }
 
 void clear(void)
