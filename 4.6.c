@@ -22,10 +22,9 @@ double inv(double f);
 int main(void)
 {
     int type, var;
-    double op2, tmp;
+    double op2, lastval = 0.0;
     char s[MAXOP];
     double vars[VARNR];
-
     for (int i = 0; i < VARNR; ++i)
         vars[i] = 0.0;
 
@@ -61,7 +60,7 @@ int main(void)
                 printf("Blad: dzielenie przez 0\n");
             break;
         case '\n':
-            printf("\t%.8g\n", pop());
+            printf("\t%.8g\n", lastval = pop());
             break;
         case '?':
             printf("\t%.8g\n", top());
@@ -87,8 +86,9 @@ int main(void)
             break;
         default:
             if(islower(type))
-                push(vars[type - 'a'])
-                ;
+                push(vars[type - 'a']);
+            else if (type == 'V')
+                push(lastval);
             else
                 printf("Blad: nieznane polecenie %s\n", s);
             break;
