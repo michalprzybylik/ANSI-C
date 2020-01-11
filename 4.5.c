@@ -105,7 +105,7 @@ double pop(void)
 double top(void)
 {
     if (sp > 0)
-        return val[sp];
+        return val[sp - 1];
     else
     {
         printf("Blad: pusty stos\n");

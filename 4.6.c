@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
+#include <ctype.h>
 
 #define MAXOP 100
 #define NUMBER '0'
@@ -16,6 +17,7 @@ void swap(void);
 void clear(void);
 void dstack(void);
 void fun(char s[]);
+double inv(double f); 
 
 int main(void)
 {
@@ -79,13 +81,14 @@ int main(void)
         case '=':
             pop();
             if(islower(var))
-                vars[var - 'a'] = pop();
+                vars[var - 'a'] = top();
             else
                 printf("Blad: brak nazwy zmiennej\n");
             break;
         default:
             if(islower(type))
-                push(var[type - 'a']);
+                push(vars[type - 'a'])
+                ;
             else
                 printf("Blad: nieznane polecenie %s\n", s);
             break;
@@ -121,7 +124,7 @@ double pop(void)
 double top(void)
 {
     if (sp > 0)
-        return val[sp];
+        return val[sp - 1];
     else
     {
         printf("Blad: pusty stos\n");
@@ -186,13 +189,15 @@ void fun(char s[])
         push(floor(pop()));
     else if (!strcmp(s, "abs"))
         push(fabs(pop()));
+    else if (!strcmp(s, "inv"))
+        push(inv(pop()));
     else
         printf("Blad: brak implementacji funkcji %s\n", s);
 }
 
-void pushvar(char s[])
+double inv(double f)
 {
-    push[]
+    return -f;
 }
 
 #include <ctype.h>
@@ -218,7 +223,7 @@ int getop(char s[])
         if (strlen(s) > 1)
             return FUN;
         else
-            return c;
+            return s[0];
     }
     if (!isdigit(c) && c != '.' && c != '-')
         return c;
