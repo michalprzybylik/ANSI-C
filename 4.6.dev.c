@@ -6,6 +6,7 @@
 #define MAXOP 100
 #define NUMBER '0'
 #define FUN 'F'
+#define VARNR 26
 
 int getop(char s[]);
 void push(double f);
@@ -18,9 +19,13 @@ void fun(char s[]);
 
 int main(void)
 {
-    int type;
-    double op2;
+    int type, var;
+    double op2, tmp;
     char s[MAXOP];
+    double vars[VARNR];
+
+    for (int i = 0; i < VARNR; ++i)
+        vars[i] = 0.0;
 
     while ((type = getop(s)) != EOF)
     {
@@ -71,10 +76,21 @@ int main(void)
         case FUN:
             fun(s);
             break;
+        case '=':
+            pop();
+            if(islower(var))
+                vars[var - 'a'] = pop();
+            else
+                printf("Blad: brak nazwy zmiennej\n");
+            break;
         default:
-            printf("Blad: nieznane polecenie %s\n", s);
+            if(islower(type))
+                push(var[type - 'a']);
+            else
+                printf("Blad: nieznane polecenie %s\n", s);
             break;
         }
+        var = type;
     }
     return 0;
 }
@@ -174,6 +190,11 @@ void fun(char s[])
         printf("Blad: brak implementacji funkcji %s\n", s);
 }
 
+void pushvar(char s[])
+{
+    push[]
+}
+
 #include <ctype.h>
 
 int getch(void);
@@ -197,7 +218,7 @@ int getop(char s[])
         if (strlen(s) > 1)
             return FUN;
         else
-            return s[0];
+            return c;
     }
     if (!isdigit(c) && c != '.' && c != '-')
         return c;
