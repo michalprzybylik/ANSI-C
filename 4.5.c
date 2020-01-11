@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <string.h>
 
 #define MAXOP 100
 #define NUMBER '0'
+#define FUN 'F' //niestandardowy operator
 
 int getop(char s[]);
 void push(double f);
@@ -11,7 +13,8 @@ double pop(void);
 double top(void);
 void swap(void);
 void clear(void);
-double primitive_mod(double a, double b);
+void dstack(void);
+void fun(char s[]);
 
 int main(void)
 {
@@ -56,11 +59,17 @@ int main(void)
         case '?':
             printf("\t%.8g\n", top());
             break;
-        case 'c':
+        case 'C':
             clear();
             break;
-        case 's':
+        case 'S':
             swap();
+            break;
+        case 'D':
+            dstack();
+            break;
+        case FUN:
+            fun(s);
             break;
         default:
             printf("Blad: nieznane polecenie %s\n", s);
@@ -117,8 +126,15 @@ void swap(void)
     else
     {
         printf("Blad: Na stosie znajduje sie za malo zmiennych\n");
-        return 0.0;
     }
+}
+
+void dstack(void)
+{
+    double top;
+    top = pop();
+    push(top);
+    push(top);
 }
 
 void clear(void)
@@ -126,34 +142,36 @@ void clear(void)
     sp = 0;
 }
 
-double primitive_mod(double a, double b)
+void fun(char s[])
 {
-    if (a >= 0 && b > 0)
+    double op;
+    if(!strcmp(s, "sin"))
+        push(sin(pop()));
+    else if (!strcmp(s, "cos"))
+        push(cos(pop()));
+    else if (!strcmp(s, "tan"))
+        push(tan(pop()));
+    else if (!strcmp(s, "ln"))
+        push(log(pop()));
+    else if (!strcmp(s, "log"))
+        push(log10(pop()));
+    else if (!strcmp(s, "log"))
+        push(log10(pop()));
+    else if (!strcmp(s, "pow"))
     {
-        while (a > b)
-            a -= b;
-        return a;
+        op = pop();
+        push(pow(pop(),op));
     }
-    else if (a < 0 && b < 0)
-    {
-        while (a < b)
-            a -= b;
-        return a;
-    }
-    else if (a >= 0 && b < 0)
-    {
-        while (a > 0)
-            a += b;
-        return a;
-    }
-    else if (a < 0 && b > 0)
-    {
-        while (a < 0)
-            a += b;
-        return a;
-    }
+    else if (!strcmp(s, "sqrt"))
+        push(sqrt(pop()));
+    else if (!strcmp(s, "ceil"))
+        push(ceil(pop()));
+    else if (!strcmp(s, "floor"))
+        push(floor(pop()));
+    else if (!strcmp(s, "abs"))
+        push(fabs(pop()));
     else
-        return -1;
+        printf("Blad: brak implementacji funkcji %s\n", s);
 }
 
 #include <ctype.h>
@@ -168,9 +186,21 @@ int getop(char s[])
     while ((s[0] = c = getch()) == ' ' || c == '\t')
         ;
     s[1] = '\0';
+    i = 0;
+    if (islower(c))
+    {
+        while (islower(s[++i] = c = getch()))
+            ;
+        s[i] = '\0';
+        if (c != EOF)
+            ungetch(c);
+        if (strlen(s) > 1)
+            return FUN;
+        else
+            return s[0];
+    }
     if (!isdigit(c) && c != '.' && c != '-')
         return c;
-    i = 0;
     if (c == '-')
     {
         if (isdigit(c = getch()) || c == '.')

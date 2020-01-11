@@ -11,6 +11,7 @@ double pop(void);
 double top(void);
 void swap(void);
 void clear(void);
+void dstack(void);
 double primitive_mod(double a, double b);
 
 int main(void)
@@ -62,6 +63,9 @@ int main(void)
         case 's':
             swap();
             break;
+        case 'd':
+            dstack();
+            break;
         default:
             printf("Blad: nieznane polecenie %s\n", s);
             break;
@@ -102,6 +106,14 @@ double top(void)
         printf("Blad: pusty stos\n");
         return 0.0;
     }
+}
+
+void dstack(void)
+{
+    double top;
+    top = pop();
+    push(top);
+    push(top);
 }
 
 void swap(void)
