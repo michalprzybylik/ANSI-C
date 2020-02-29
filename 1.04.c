@@ -1,4 +1,8 @@
-#include<stdio.h>
+/*
+Ćwiczenie 1.4. Napisz program wypisujący zestawienie temperatur w skali Celsjusza 
+i ich odpowiedników w skali Fahrenheita.
+*/
+#include <stdio.h>
 
 int main()
 {
@@ -10,9 +14,9 @@ int main()
     upper = 100;
     cels = lower;
     printf("Celsius\tFahrenheit\n");
-    while(cels <= upper)
+    while (cels <= upper)
     {
-        fahr = (9.0/5.0) * cels + 32;
+        fahr = (9.0 / 5.0) * cels + 32;
         printf("%7.0f\t%10.1f\n", cels, fahr);
         cels = cels + step;
     }
