@@ -39,9 +39,9 @@ void swap(void)
 {
     if (sp > 1)
     {
-	double tmp = val[sp - 1];
-	val[sp - 1] = val[sp - 2];
-	val[sp - 2] = tmp;
+        double tmp = val[sp - 1];
+        val[sp - 1] = val[sp - 2];
+        val[sp - 2] = tmp;
     }
     else
     {
@@ -53,10 +53,10 @@ void dstack(void)
 {
     if (sp > 0)
     {
-	if (sp < MAXVAL)
-	    val[sp++] = val[sp - 1];
-	else
-	    printf("Blad: pelen stos; nie mozna umiescic %g\n", val[sp - 1]);
+        if (sp < MAXVAL)
+            val[sp++] = val[sp - 1];
+        else
+            printf("Blad: pelen stos; nie mozna umiescic %g\n", val[sp - 1]);
     }
     else
         printf("Blad: pusty stos\n");
