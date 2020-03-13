@@ -2,7 +2,7 @@
 
 #define MAXVAL 100
 
-int sp = 0;
+static int sp = 0;
 double val[MAXVAL];
 
 void push(double f)
@@ -37,13 +37,11 @@ double top(void)
 
 void swap(void)
 {
-    double top, next;
     if (sp > 1)
     {
-        top = pop();
-        next = pop();
-        push(top);
-        push(next);
+	double tmp = val[sp - 1];
+	val[sp - 1] = val[sp - 2];
+	val[sp - 2] = tmp;
     }
     else
     {
@@ -53,13 +51,23 @@ void swap(void)
 
 void dstack(void)
 {
-    double top;
-    top = pop();
-    push(top);
-    push(top);
+    if (sp > 0)
+    {
+	if (sp < MAXVAL)
+	    val[sp++] = val[sp - 1];
+	else
+	    printf("Blad: pelen stos; nie mozna umiescic %g\n", val[sp - 1]);
+    }
+    else
+        printf("Blad: pusty stos\n");
 }
 
 void clear(void)
 {
     sp = 0;
+}
+
+int nstack(void)
+{
+    return sp;
 }
