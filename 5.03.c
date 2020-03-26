@@ -6,19 +6,19 @@ funkcja strcat(s,t) dopisuje tekst z t na koniec tekstu w s.
 
 #define TEXTLEN 64
 
-void ostrcat(char *s, char *t);
+void mystrcat(char *s, char *t);
 
 char stra[] = "testa";
 char strb[] = "testb";
 
 int main(void)
 {
-    ostrcat(stra, strb);
+    mystrcat(stra, strb);
     printf("%s\n", stra);
     return 0;
 }
 
-void ostrcat(char *s, char *t)
+void mystrcat(char *s, char *t)
 {
     while (*s)
         s++;
