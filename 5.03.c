@@ -4,8 +4,6 @@ funkcja strcat(s,t) dopisuje tekst z t na koniec tekstu w s.
 */
 #include <stdio.h>
 
-#define TEXTLEN 64
-
 void mystrcat(char *s, char *t);
 
 char stra[] = "testa";
