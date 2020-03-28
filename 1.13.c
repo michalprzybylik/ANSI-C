@@ -1,4 +1,9 @@
-#include<stdio.h>
+/*
+Ćwiczenie 1.13. Napisz program tworzący histogram długości słów wejściowych.
+Łatwiej rysuje się histogram z wykresami poziomymi; pionowa orientacja jest
+bardziej wymagająca.
+*/
+#include <stdio.h>
 
 #define MAXWORD 20
 #define HISTSIZE 50
@@ -8,14 +13,14 @@ int main()
     int c, nc = 0, max = 0, currentsize = 0;
     int tab[MAXWORD];
 
-    for(int i = 0; i < MAXWORD; ++i)
-        tab[i]=0;
+    for (int i = 0; i < MAXWORD; ++i)
+        tab[i] = 0;
 
-    while (((c = getchar()) != EOF ))
+    while (((c = getchar()) != EOF))
     {
-        if( c == ' ' || c == '\t' || c == '\n')
+        if (c == ' ' || c == '\t' || c == '\n')
         {
-            if(nc > 0)
+            if (nc > 0)
             {
                 if (nc < MAXWORD)
                     ++tab[nc - 1];
@@ -28,21 +33,21 @@ int main()
             ++nc;
     }
 
-    for(int i = 0; i < MAXWORD; ++i)
-        if(max < tab[i])
+    for (int i = 0; i < MAXWORD; ++i)
+        if (max < tab[i])
             max = tab[i];
 
-    if(max > 0)
+    if (max > 0)
     {
         printf("D. SLOWA\n");
         for (int i = 0; i < MAXWORD; ++i)
         {
             if (i == (MAXWORD - 1))
                 printf("    >=20 |");
-            else 
+            else
                 printf("%8d |", i + 1);
-            currentsize = ( tab[i] * HISTSIZE / max );
-            for(int j = 0; j < HISTSIZE; ++j)
+            currentsize = (tab[i] * HISTSIZE / max);
+            for (int j = 0; j < HISTSIZE; ++j)
             {
                 if (j < currentsize)
                     putchar('*');
