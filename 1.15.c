@@ -1,4 +1,8 @@
-#include<stdio.h>
+/*
+Ćwiczenie 1.15. Napisz nową wersję programu przekształcania temperatur
+z p. 1.2, w której przekształceń tych dokonuje funkcja.
+*/
+#include <stdio.h>
 
 #define LOWER 0
 #define UPPER 300
@@ -8,8 +12,8 @@ double fahr_to_cels(int);
 
 int main()
 {
-    for(int fahr = LOWER; fahr <= UPPER; fahr = fahr + STEP)
-        printf("%3d %6.1f\n",fahr,fahr_to_cels(fahr));
+    for (int fahr = LOWER; fahr <= UPPER; fahr = fahr + STEP)
+        printf("%3d %6.1f\n", fahr, fahr_to_cels(fahr));
     return 0;
 }
 

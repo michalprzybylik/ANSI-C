@@ -1,5 +1,5 @@
 /*
-Ćwiczenie 1.13. Napisz program tworzący histogram częstości występowania różnych
+Ćwiczenie 1.14. Napisz program tworzący histogram częstości występowania różnych
 znaków pochodzących z wejścia.
 */
 #include <stdio.h>
