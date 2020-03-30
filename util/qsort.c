@@ -11,6 +11,7 @@ void bubblesort(int v[], int n)
 void selectsort(int v[], int n)
 {
     int i, j, imin;
+    void swap(int v[], int i, int j);
     for (i = 0; i < n - 1; i++)
     {
         imin = i;
