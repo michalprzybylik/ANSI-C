@@ -22,8 +22,8 @@ void reverse(char s[])
 {
     int f, b, tmp;
     f = b = 0;
-    while (s[++b])
-        ;
+    while (s[b])
+        b++;
     --b;
     for (; f < b; ++f, --b)
         tmp = s[f], s[f] = s[b], s[b] = tmp;
