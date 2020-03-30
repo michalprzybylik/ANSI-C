@@ -8,7 +8,7 @@ void bubblesort(int v[], int n)
                 swap(v, j, j + 1);
 }
 
-void selectionsort(int v[], int n)
+void selectsort(int v[], int n)
 {
     int i, j, imin;
     for (i = 0; i < n - 1; i++)
