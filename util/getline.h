@@ -1,1 +1,1 @@
-int mygetline(char *s, int lim);
+int getline(char *s, int lim);
