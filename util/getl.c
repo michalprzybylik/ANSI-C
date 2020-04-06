@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int getline(char *s, int lim)
+int getl(char *s, int lim)
 {
     int c;
     char *p = s;

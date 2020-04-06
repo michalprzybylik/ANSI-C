@@ -1,0 +1,1 @@
+int getl(char *s, int lim);
