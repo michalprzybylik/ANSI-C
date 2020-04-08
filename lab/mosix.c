@@ -9,7 +9,7 @@ Proces rodzica tworzy dwa potoki oraz n potomkow (n jest parametrem wywolania pr
 Nastepnie losuje i wysyla wszystkie liczby do potoku. Procesy potomne odbieraja, przetwarzaja
 i odsylaja wyniki do rodzica, dopoki nie odbiora z potoku liczby -1. Kiedy tak sie stanie koncza
 prace. Proces rodzica odbiera liczby od potomkow przez potok i sumuje je. Gdy wszystkie liczby 
-zostana odebrane, rodzic wysyla do potoku liczbe -1, co jest sygnalem dla potomkow do zakonczenia
+zostana odebrane, rodzic wysyla do potoku n liczb -1, co jest sygnalem dla potomkow do zakonczenia
 pracy
 */
 #include <stdio.h>
@@ -77,7 +77,7 @@ int main(int argc, char *argv[])
                 tosend = ENDDATA;
                 while (i--)                                          //gdy wszystkie liczby zostaly przetworzone wyslij n liczb
                         write(sendpipe[1], &tosend, sizeof(tosend)); //ENDDATA co bedzie sygnalem do zakonczenia pracy potomkow
-                        
+
                 printf("\nSuma najwiekszych dzielnikow tych liczb wynosi: %ld\n", sum); //wypisz wynik
                 return 0;
                 break;
