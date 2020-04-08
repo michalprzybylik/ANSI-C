@@ -32,8 +32,7 @@ int main(int argc, char *argv[])
 
         int sendpipe[2], recpipe[2];         //utworzenie dwoch potokow, potok sendpipe odpowiada za dane przesylane
         if (pipe(sendpipe) || pipe(recpipe)) //od rodzica do potomkow, potok recpipe za dane wynikowe od potomkow do rodzica
-                perror("blad tworzenia potoku"); 
-                exit(-2);
+                perror("blad tworzenia potoku"), exit(-2);
         int tosend, rec;
 
         long int sum = 0;
