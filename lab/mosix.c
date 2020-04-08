@@ -16,9 +16,10 @@ pracy
 #include <stdlib.h>
 #include <math.h>
 #include <unistd.h>
+#include <time.h>
 
-#define NUMSIZE 10  //liczba liczb do przetworzenia
-#define NUMRANGE 16 //zakres liczby od 2 do NUMRANGE
+#define NUMSIZE 512  //liczba liczb do przetworzenia
+#define NUMRANGE 1024 //zakres liczby od 2 do NUMRANGE
 #define ENDDATA -1
 
 int maxdiv(int n); //deklaracja funkcji zwracajacej najwiekszy calkowity dzielnik liczby naturalnej n wiekszej od 1
@@ -28,7 +29,9 @@ int main(int argc, char *argv[])
         if (argc != 2)
                 perror("skladnia \"nazwa_programu liczba_potomkow\""), exit(1);
 
-        int n = atoi(argv[1]);
+        int n;
+        if ((n = atoi(argv[1])) <= 0)
+                perror("argument musi byc liczba dodatnia"), exit(2);
 
         int sendpipe[2], recpipe[2];         //utworzenie dwoch potokow, potok sendpipe odpowiada za dane przesylane
         if (pipe(sendpipe) || pipe(recpipe)) //od rodzica do potomkow, potok recpipe za dane wynikowe od potomkow do rodzica
@@ -38,15 +41,19 @@ int main(int argc, char *argv[])
         long int sum = 0;
 
         int pid;
-        int i = n;                   //utworzenie n procesow potomnych przez rodzica
-        while (i--)                  //nowo utworzony proces potomny od razu wychodzi
-                if (!(pid = fork())) //z petli (jego pid jest rowny 0)
+        int i = n;                         //utworzenie n procesow potomnych przez rodzica
+        while (i-- && (pid = fork()) >= 0) //nowo utworzony proces potomny od razu wychodzi
+                if (!pid)                  //z petli (jego pid jest rowny 0)
                         break;
 
         switch (pid) //sprawdz czy proces potomka czy rodzica
         {
         case -1:
                 perror("blad tworzenia procesu rodzica");
+                i = n;
+                tosend = ENDDATA;
+                while (i--)
+                        write(sendpipe[1], &tosend, sizeof(tosend));
                 exit(-1);
                 break;
         case 0:                                                                //proces potomka
@@ -58,6 +65,7 @@ int main(int argc, char *argv[])
                 exit(0);
                 break;
         default:                        //proces rodzica
+                srand(time(NULL));
                 i = NUMSIZE;            //wylosuj NUMSIZE liczb,
                 printf("Wylosowano: "); //wypisz je na wyjscie
                 while (i--)             //i wyslij do potomkow przez potok
