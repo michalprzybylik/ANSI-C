@@ -18,9 +18,9 @@ pracy
 #include <unistd.h>
 #include <time.h>
 
-#define NUMSIZE 512  //liczba liczb do przetworzenia
-#define NUMRANGE 1024 //zakres liczby od 2 do NUMRANGE
-#define ENDDATA -1
+#define NUMSIZE 512   //liczba liczb do przetworzenia
+#define NUMRANGE 1024 //zakres liczb od 2 do NUMRANGE
+#define ENDDATA -1    //znak konca danych w potoku
 
 int maxdiv(int n); //deklaracja funkcji zwracajacej najwiekszy calkowity dzielnik liczby naturalnej n wiekszej od 1
 
@@ -48,24 +48,24 @@ int main(int argc, char *argv[])
 
         switch (pid) //sprawdz czy proces potomka czy rodzica
         {
-        case -1:
-                perror("blad tworzenia procesu rodzica");
-                i = n;
-                tosend = ENDDATA;
-                while (i--)
-                        write(sendpipe[1], &tosend, sizeof(tosend));
-                exit(-1);
+        case -1:                                                     //blad tworzenia potomka
+                perror("blad tworzenia procesu rodzica");            //wyswietl komunikat
+                i = n;                                               //o bledzie
+                tosend = ENDDATA;                                    //zakoncz wszystkie
+                while (i--)                                          //wywolane do tej
+                        write(sendpipe[1], &tosend, sizeof(tosend)); //pory procesy
+                exit(-1);                                            //i zakoncz program
                 break;
         case 0:                                                                //proces potomka
                 while (read(sendpipe[0], &rec, sizeof(rec)) && rec != ENDDATA) //odbieraj, przetwarzaj i odsylaj dane dopoki nie otrzymasz z potoku liczby -1
-                {
-                        tosend = maxdiv(rec);                       //wykonaj obliczenia
-                        write(recpipe[1], &tosend, sizeof(tosend)); //odeslij wynik do rodzica
+                {                                                              //
+                        tosend = maxdiv(rec);                                  //wykonaj obliczenia
+                        write(recpipe[1], &tosend, sizeof(tosend));            //odeslij wynik do rodzica
                 }
                 exit(0);
                 break;
         default:                        //proces rodzica
-                srand(time(NULL));
+                srand(time(NULL));      //
                 i = NUMSIZE;            //wylosuj NUMSIZE liczb,
                 printf("Wylosowano: "); //wypisz je na wyjscie
                 while (i--)             //i wyslij do potomkow przez potok
