@@ -72,9 +72,12 @@ int main(int argc, char *argv[])
                         read(recpipe[0], &rec, sizeof(rec)); //odbierz wynik z potoku
                         sum += rec;                          //dodaj go obliczanej sumy
                 }
-                tosend = ENDDATA;                            //gdy wszystkie liczby zostaly przetworzone wyslij liczbe                                            //do wszystkich potomkow, co bedzie
-                write(sendpipe[1], &tosend, sizeof(tosend)); //ENDDATA co bedzie sygnalem do zakonczenia pracy potomkow
 
+                i = n;
+                tosend = ENDDATA;
+                while (i--)                                          //gdy wszystkie liczby zostaly przetworzone wyslij n liczb
+                        write(sendpipe[1], &tosend, sizeof(tosend)); //ENDDATA co bedzie sygnalem do zakonczenia pracy potomkow
+                        
                 printf("\nSuma najwiekszych dzielnikow tych liczb wynosi: %ld\n", sum); //wypisz wynik
                 return 0;
                 break;
