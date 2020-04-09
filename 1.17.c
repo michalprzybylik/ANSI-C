@@ -1,5 +1,5 @@
 /*
-Ćwiczenie 1.16. Napisz program wypisujący wszystkie wiersze wejściowe dłuższe
+Ćwiczenie 1.17. Napisz program wypisujący wszystkie wiersze wejściowe dłuższe
 niż 80 znaków.
 */
 #include <stdio.h>

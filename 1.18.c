@@ -1,4 +1,8 @@
-#include<stdio.h>
+/*
+Ćwiczenie 1.18. Napisz program, który będzie pomijać początkowe znaki odstępu 
+i tabulacji oraz usuwać całkowicie białe (puste wiersze).
+*/
+#include <stdio.h>
 
 #define MAXLINE 1000
 
@@ -11,9 +15,9 @@ int main()
     char line[MAXLINE];
     char newline[MAXLINE];
 
-    while(getLine(line, MAXLINE) != 0)
+    while (getLine(line, MAXLINE) != 0)
     {
-        if(deleteBlank(newline, line))
+        if (deleteBlank(newline, line))
             printf("%s", newline);
     }
     return 0;
@@ -22,28 +26,28 @@ int main()
 int getLine(char line[], int lim)
 {
     int i = 0, c = 0;
-    for(i = 0; (c = getchar()) != EOF && c != '\n'; ++i)
-        if(i < lim - 1)
+    for (i = 0; (c = getchar()) != EOF && c != '\n'; ++i)
+        if (i < lim - 1)
             line[i] = c;
-    if(c == '\n')
+    if (c == '\n')
     {
-        if(i < lim - 1)
+        if (i < lim - 1)
             line[i] = c;
         ++i;
     }
-    if(i < lim)
+    if (i < lim)
         line[i] = '\0';
     else
-        line[lim - 1] = '\0';   
+        line[lim - 1] = '\0';
     return i;
 }
 
 int deleteBlank(char to[], char from[])
 {
     int i = 0, j = 0;
-    while(from[j] == ' ' || from[j] == '\t' || from[j] == '\n')
+    while (from[j] == ' ' || from[j] == '\t' || from[j] == '\n')
         ++j;
-    while((to[i] = from[i + j]) != '\0' )
+    while ((to[i] = from[i + j]) != '\0')
         ++i;
     return i;
 }

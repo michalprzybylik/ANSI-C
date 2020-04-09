@@ -1,3 +1,9 @@
+/*
+Ćwiczenie 1.20. Napisz program detab zastępujący znaki tabulacji odpowiednią 
+liczbą znaków odstępu, określoną przez następny punkt tabulacyjny. Przyjmij
+stały zbiór punktów tabulacyjnych, przypuśćmy co n pozycji. Czy n powinno
+być zmienną, czy raczej parametrem symbolicznym. 
+*/
 #include <stdio.h>
 
 #define TABSIZE 8

@@ -1,4 +1,9 @@
-#include<stdio.h>
+/*
+Ćwiczenie 1.19. Napisz funkcję reverse(s) odwracającą kolejność znaków tekstu
+w argumencie s. Zastosuj ją w programie odwracającym kolejno wszystkie
+wiersze wejściowe 
+*/
+#include <stdio.h>
 
 #define MAXLINE 1000
 
