@@ -1,5 +1,6 @@
 #include <stdio.h>
 int i;
+	int z = 1;
 int main()
 {
 	void inc (void);
@@ -43,6 +44,11 @@ int main()
 	printf("z=%d\n", z);
 	inc();
 	printf("z=%d\n", z);
+	i = 0;
+	if (i = 1 && ++i == 1) //ciekawe
+		printf("tu i=%d\n", i);
+	if ((i = 1) && (++i == 2) && (i++ == 2) && (i == 3)) //ciekawe
+		printf("i=%d\n", i);
 	return 0;
 	
 }
