@@ -49,8 +49,14 @@ int main()
 		printf("tu i=%d\n", i);
 	if ((i = 1) && (++i == 2) && (i++ == 2) && (i == 3)) //ciekawe
 		printf("i=%d\n", i);
+	char napis[] = "napisano tu ze chuj";
+	*(napis + 1) = 'u';
+	printf("%s\n", napis);	
+	char *name[] = {"blad", "asd"};
+	printf("%s\n", name[0]);	
+	printf("%s\n", name[1]);	
+	printf("%c\n" , *(*(name + 1) + 1));
 	return 0;
-	
 }
 
 int fun(char a)
