@@ -1,6 +1,6 @@
 /*
-Ćwiczenie 5.8. W funkcjach day_of_year i month_day nie ma żadnego sprawdzania 
-poprawności danych. Napraw tę usterkę.
+Ćwiczenie 5.9. Napisz na nowo funkcje day_of_year  i month_day, stosując
+wskaźniki zamiast indeksowania tablic.
 */
 #include <stdio.h>
 
@@ -22,21 +22,22 @@ static char daytab[2][13] = {
 
 int day_of_year(int year, int day, int month)
 {
-    char leap;
+    char leap, *p;
 
     if (year < 1)
         return -1;
     leap = (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
-    if (month < 1 || month > 12 || day < 1 || day > daytab[leap][month])
+    if (month < 1 || month > 12 || day < 1 || day > *(*(daytab + leap) + month))
         return -1;
-    for (int i = 1; i < month; i++)
-        day += daytab[leap][i];
+    p = *(daytab + leap);
+    while(month--)
+        day += *++p;
     return day;
 }
 
 int month_day(int year, int yearday, int *pmonth, int *pday)
 {
-    char i, leap;
+    char leap, *p;
 
     if (year < 1)
     {
@@ -49,8 +50,9 @@ int month_day(int year, int yearday, int *pmonth, int *pday)
         *pmonth = -1, *pday = -1;
         return 0;
     }
-    for (i = 1; yearday > daytab[leap][i]; i++)
-        yearday -= daytab[leap][i];
-    *pmonth = i, *pday = yearday;
+    p = *(daytab + leap);
+    while(yearday > *++p)
+        yearday -= *p;
+    *pmonth = p - *(daytab + leap), *pday = yearday;
     return 1;
 }
