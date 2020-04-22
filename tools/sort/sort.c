@@ -28,8 +28,8 @@ int main(void)
 
 #define MAXLEN 1000
 
-#include "../util/alloc.h"
-#include "../util/getl.h"
+#include "../../util/alloc.h"
+#include "../../util/getl.h"
 
 int readlines(char *lineptr[], int maxlines)
 {
