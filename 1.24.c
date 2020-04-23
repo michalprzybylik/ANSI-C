@@ -1,3 +1,10 @@
+/*
+Ćwiczenie 1.24. Napisz program, który sprawdza szczątkową poprawność składniową 
+dowolnego programu w języku C, tj. sygnalizuje błędy w rodzaju brakujących 
+nawiasów okrągłych, kwadratowych czy klamrowych. Nie zapomnij także 
+o apostrofach i cudzysłowach oraz o sekwencjach specjalnych i komentarzach. 
+(Ten program byłby bardzo trudny, gdybyś napisał go w pełni ogólnie.)
+*/
 #include <stdio.h>
 
 #define SEARCH         \

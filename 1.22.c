@@ -1,3 +1,10 @@
+/*
+Ćwiczenie 1.22. Napisz program, który "łamie" długie wiersze wejściowe na dwa 
+lub więcej krótszych wierszy po ostatnim znaku różnym od znaku odstępu i tabulacji, 
+mieszczącym się przed n-tą pozycją wejścia. Zapewnij, aby Twój program 
+postępował inteligentnie z bardzo długimi wierszami oraz wtedy, gdy 
+przed wskazaną pozycją nie wystąpił żaden znak odstępu lub tabulacji.
+*/
 #include <stdio.h>
 
 #define MAXLINE 1000

@@ -1,3 +1,8 @@
+/*
+Ćwiczenie 1.23. Napisz program usuwający wszystkie komentarze z dowolnego 
+programu w języku C. Nie zapomnij o właściwym traktowaniu stałych znakowych 
+i napisowych. Komentarze języka C nie mogą być zagnieżdżone. 
+*/
 #include <stdio.h>
 
 int main()

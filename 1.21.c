@@ -1,5 +1,5 @@
 /*
-Ćwiczenie 1.20. Napisz program entab, który zastąpi ciągi znaków odstępu przez
+Ćwiczenie 1.21. Napisz program entab, który zastąpi ciągi znaków odstępu przez
 minimalną liczbę znaków tabulacji i znaków odstępu tak, aby odstępy zostały
 zachowane. Użyj tych samych punktów tabulacyjnych, co w programie detab.
 Jeśli zarówno znak tabulacji, jak i jeden znak odstępu wystarczy do osiągnięcia
