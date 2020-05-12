@@ -12,7 +12,7 @@ niekompletnej listy argumentów.
 #define TABINC 8
 
 void settab(int argc, char *argv[], char *tab);
-void entab(char *tab);
+void detab(char *tab);
 
 int main(int argc, char *argv[])
 {
