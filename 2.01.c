@@ -1,3 +1,10 @@
+/*
+Ćwiczenie 2.1. Napisz program wyznaczający dziedziny wartości zmiennych typu 
+char, short, int, long opatrzonych kwalifikatorami signed i unsigned. Wynik 
+powienien zawierać odpowiednie wartości ze standardowych plików nagłówkowych 
+oraz wartości obliczone bezpośrednio przez program. Trudniejszym zadaniem 
+jest wyliczenie zakresów dla różnych typów zmiennoprzecinkowych.
+*/
 #include <stdio.h>
 #include <limits.h>
 

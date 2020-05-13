@@ -1,4 +1,9 @@
-#include<stdio.h>
+/*
+Ćwiczenie 2.2. Napisz pętlę równoważną z powższą pętlą for, nie używając 
+operatorów logicznych && i ||. 
+for (i = 0; i < lim - 1 && (c = getchar()) != '\n' && c != EOF; ++i)
+*/
+#include <stdio.h>
 
 #define LIMIT 10
 

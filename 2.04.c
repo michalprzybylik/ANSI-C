@@ -1,4 +1,8 @@
-#include<stdio.h>
+/*
+Ćwiczenie 2.4. Napisz inną wersję funkcji squeeze(s1,s2) tak, aby z tekstu w argumencie 
+s1 uzuwała każdy znak występujący w tekście argumentu s2.
+*/
+#include <stdio.h>
 
 void squezze(char s1[], char s2[]);
 

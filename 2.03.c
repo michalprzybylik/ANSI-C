@@ -1,3 +1,9 @@
+/*
+Ćwiczenie 2.3. Napisz funkcję htoi(s), która zamieni ciąg cyfr szesnastkowych na 
+równoważną mu liczbę całkowitą. W funkcji należy uwzględnić, że ciąg może 
+zaczynać się od 0x lub 0X. Dozwolonymi cyframi szesnastkowymi są: cyfry od 
+0 do 9 i litery od a do f oraz od A do F.
+*/
 #include <stdio.h>
 
 long int htoi(char s[]);
@@ -49,10 +55,12 @@ long int htoi(char s[])
     return h;
 }
 
-//Funkcja z obsluga znakow +- jej wada jest to ze gdy wystepuje blad danych wejsciowych
-//trzeba zwrocic wartosc wszystkie wartosci z zakresu typu unsigned int moga byc zwrocone
-//jako poprawny wynik stad nie ma mozliwosci sygnalizowania blednych danych wejscowych przy 
-//pomocy zwracanej wartosci(-1L)
+/*
+Funkcja z obsluga znakow +- jej wada jest to ze gdy wystepuje blad danych wejsciowych 
+trzeba zwrocic wartosc wszystkie wartosci z zakresu typu unsigned int moga byc zwrocone 
+jako poprawny wynik stad nie ma mozliwosci sygnalizowania blednych danych wejscowych przy 
+pomocy zwracanej wartosci (-1L).
+*/
 /*
 long int htoi(char s[])
 {
