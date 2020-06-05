@@ -2,7 +2,7 @@
 Ćwiczenie 5.12. Rozbuduj programy entab i detab, aby akceptowały skrót 
     entab -m +n
 oznaczający punkty tabulacyjne co n kolumn, poczynając od kolumny m. Wybierz 
-dogodny (dla uytkownika) sposób postępowania programu w przypadku 
+dogodny (dla użytkownika) sposób postępowania programu w przypadku 
 niekompletnej listy argumentów.
 */
 #include <stdio.h>

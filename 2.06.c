@@ -1,3 +1,8 @@
+/*
+Ćwiczenie 2.6. Napisz funkcję setbits(x,p,n,y) zwracającą wartość x, w której 
+n bitów - poczynając od pozycji p - zastąpiono przez n skrajnych bitów z prawej 
+strony y. Pozostałe bity x nie powinny ulec zmianie.
+*/
 #include <stdio.h>
 
 int setbits(int x, int p, int n, int y);

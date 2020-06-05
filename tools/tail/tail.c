@@ -18,7 +18,7 @@ w dwuwymiarowej tablicy o stałym rozmiarze.
 
 #define ERRPARAMS 1
 #define ERRLINES 2
-#define MAXLINES 8192
+#define MAXLINES 8192 
 #define LINESTOPRINT 10
 
 char **lineptr;
@@ -31,7 +31,7 @@ void writelines(char **lineptr, char **ptr, long int nlines);
 
 int main(int argc, char *argv[])
 {
-    char **ptr;
+    char **ptr; 
     long int nlines;
     if (readparams(argc, argv))
     {
@@ -89,18 +89,7 @@ int readparams(int argc, char *argv[])
     return 1;
 }
 
-int getl(char *s, int lim)
-{
-    int c;
-    char *p = s;
-    while (--lim > 0 && (c = getchar()) != EOF && c != '\n')
-        *p++ = c;
-    if (c == '\n')
-        *p++ = c;
-    *p = '\0';
-    return p - s;
-}
-
+#include "../../util/getl.h"
 #define MAXLEN 1024
 
 char **readlines(char **lineptr, int maxlines, long int *nlines)
