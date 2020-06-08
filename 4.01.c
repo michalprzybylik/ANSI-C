@@ -1,3 +1,7 @@
+/*
+Ćwiczenie 4.1. Napisz funkcję strindex(s,t) zwracającą pozycję pierwszego od 
+końca wystąpienia wzorca t w s lub -1, jeśli wzorec nie występuje w s.
+*/
 #include <stdio.h>
 #define MAXLINE 1000
 

@@ -1,3 +1,9 @@
+/*
+Ćwiczenie 3.6. Napisz inną wersję funkcji itoa tak, aby akceptowała nie dwa, 
+a trzy argumenty. Niech trzeci argument określa minimalny rozmiar pola; jeśli 
+przekształcona liczba będzie za krótka, to należy ją uzupełnić z lewej strony 
+znakami odstępu.
+*/
 #include <stdio.h>
 #define STRLEN 1024
 
@@ -40,7 +46,7 @@ void itoa(int n, char s[], int m)
     } while (n /= 10);
     if (sign)
         s[i++] = '-';
-    while(i < m)
+    while (i < m)
         s[i++] = ' ';
     s[i] = '\0';
     reverse(s);

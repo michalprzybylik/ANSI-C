@@ -1,4 +1,12 @@
-#include<stdio.h>
+/*
+Ćwiczenie 3.3. Napisz funkcję expand(s1,s2), która przepisując tekst z argumentu 
+s1 do d2, rozwija skrócone zapisy typu a-z do równoważnych im pełnych 
+ciągów abc...xyz. Uwzględnij wielkie i małe litery alfabetu oraz cyfry. Bądź 
+również przygotowany na obsłużenie zapisów w rodzaju a-b-c oraz a-z0-9, 
+a także -a-z. Przyjmij, że początkowe i końcowe znaki "-" są traktowane 
+literalnie.
+*/
+#include <stdio.h>
 
 #define MAXTAB 1000
 
@@ -25,15 +33,15 @@ int main(void)
 	return 0;
 }
 
-void expand(char s1[] , char s2[])
+void expand(char s1[], char s2[])
 {
 	char c;
 	int i = 0, j = 0;
-	while((c = s1[i++]))
-		if(s1[i] == '-' && s1[i + 1] >= c)
+	while ((c = s1[i++]))
+		if (s1[i] == '-' && s1[i + 1] >= c)
 		{
 			++i;
-			while(c < s1[i])
+			while (c < s1[i])
 				s2[j++] = c++;
 		}
 		else

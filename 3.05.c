@@ -1,3 +1,9 @@
+/*
+Ćwiczenie 3.5. Napisz funkcję itob(n,s,b) zamieniającą wartość całkowitą n na 
+znakową reprezentację liczby w systemie o podstawie b i zapisującą wynik w s. 
+W szczeglności itob(n,s,16) przekształca n na postać szesnastkową, którą 
+umieszcza w s.
+*/
 #include <stdio.h>
 #define STRLEN 1024
 

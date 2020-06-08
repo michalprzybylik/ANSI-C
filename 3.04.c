@@ -1,3 +1,9 @@
+/*
+Ćwiczenie 3.4. W notacji uzupełnieniowej do 2 nasza wersja funkcji itoa nie obsłuży 
+największej liczby ujemnej, gdy wartość n jest równa -(2^(rozmiar_slowa - 1)). 
+Wyjaśnij, dlaczego. Zmień tę funkcję tak, aby wypisywała poprawną wartość 
+liczby niezależnie od maszyny, na której będzie uruchamiana.
+*/
 #include <stdio.h>
 #define STRLEN 1024
 

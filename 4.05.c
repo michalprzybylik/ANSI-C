@@ -1,3 +1,7 @@
+/*
+Ćwiczenie 4.5. Zorganizuj dostęp do bibliotecznych funkcji numerycznych, jak 
+sin, exp czy pow. Zajrzyj do opisu nagłówka <math.h> w dodatku B4.
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -145,7 +149,7 @@ void clear(void)
 void fun(char s[])
 {
     double op;
-    if(!strcmp(s, "sin"))
+    if (!strcmp(s, "sin"))
         push(sin(pop()));
     else if (!strcmp(s, "cos"))
         push(cos(pop()));
@@ -160,7 +164,7 @@ void fun(char s[])
     else if (!strcmp(s, "pow"))
     {
         op = pop();
-        push(pow(pop(),op));
+        push(pow(pop(), op));
     }
     else if (!strcmp(s, "sqrt"))
         push(sqrt(pop()));

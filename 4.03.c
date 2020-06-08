@@ -1,3 +1,8 @@
+/*
+Ćwiczenie 4.3. Posługując się podstawowym schematem, łatwo można rozszerzyć 
+funkcje kalkulatora. Dodaj więc obsługę operatora dzielenia modulo % oraz 
+możliwość wprowadzania liczb ujemnych.
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -43,7 +48,7 @@ int main(void)
         case '%':
             op2 = pop();
             if (op2 != 0.0)
-                push(fmod(pop(),op2));
+                push(fmod(pop(), op2));
             else
                 printf("Blad: dzielenie przez 0\n");
             break;

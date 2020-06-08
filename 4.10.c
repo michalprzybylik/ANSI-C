@@ -1,3 +1,9 @@
+/*
+Ćwiczenie 4.10. Przy innej organizacji program mógłby korzystać z funkcji getline, 
+która czyta z wejścia cały wiersz; wówczas funkcje getch i ungetch w ogóle nie 
+byłyby potrzebne. Rozpatrz na nowo program kalkulatora z zastosowaniem tego 
+podejścia.
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -17,7 +23,7 @@ void swap(void);
 void clear(void);
 void dstack(void);
 void fun(char s[]);
-double inv(double f); 
+double inv(double f);
 
 int main(void)
 {
@@ -79,13 +85,13 @@ int main(void)
             break;
         case '=':
             pop();
-            if(islower(var))
+            if (islower(var))
                 vars[var - 'a'] = top();
             else
                 printf("Blad: brak nazwy zmiennej\n");
             break;
         default:
-            if(islower(type))
+            if (islower(type))
                 push(vars[type - 'a']);
             else if (type == 'V')
                 push(lastval);
@@ -164,7 +170,7 @@ void clear(void)
 void fun(char s[])
 {
     double op;
-    if(!strcmp(s, "sin"))
+    if (!strcmp(s, "sin"))
         push(sin(pop()));
     else if (!strcmp(s, "cos"))
         push(cos(pop()));
@@ -179,7 +185,7 @@ void fun(char s[])
     else if (!strcmp(s, "pow"))
     {
         op = pop();
-        push(pow(pop(),op));
+        push(pow(pop(), op));
     }
     else if (!strcmp(s, "sqrt"))
         push(sqrt(pop()));
@@ -213,9 +219,9 @@ int getop(char s[])
     int i, c;
     if (line[li] == '\0')
     {
-        if(getLine(line, MAXLINE) == 0)
+        if (getLine(line, MAXLINE) == 0)
             return EOF;
-        else 
+        else
             li = 0;
     }
     while ((s[0] = c = line[li++]) == ' ' || c == '\t')
@@ -258,19 +264,19 @@ int getop(char s[])
 
 int getLine(char line[], int lim)
 {
-	int i = 0, c = 0;
-	for (i = 0; (c = getchar()) != EOF && c != '\n'; ++i)
-		if (i < lim - 1)
-			line[i] = c;
-	if (c == '\n')
-	{
-		if (i < lim - 1)
-			line[i] = c;
-		++i;
-	}
-	if (i < lim)
-		line[i] = '\0';
-	else
-		line[lim - 1] = '\0';
-	return i;
+    int i = 0, c = 0;
+    for (i = 0; (c = getchar()) != EOF && c != '\n'; ++i)
+        if (i < lim - 1)
+            line[i] = c;
+    if (c == '\n')
+    {
+        if (i < lim - 1)
+            line[i] = c;
+        ++i;
+    }
+    if (i < lim)
+        line[i] = '\0';
+    else
+        line[lim - 1] = '\0';
+    return i;
 }

@@ -1,3 +1,7 @@
+/*
+Ćwiczenie 4.11. Zmień funkcję getop tak, aby nie potrzebowała funkcji ungetch. 
+Rada: użyj wewnętrznej zmiennej static.
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -17,7 +21,7 @@ void swap(void);
 void clear(void);
 void dstack(void);
 void fun(char s[]);
-double inv(double f); 
+double inv(double f);
 
 int main(void)
 {
@@ -79,13 +83,13 @@ int main(void)
             break;
         case '=':
             pop();
-            if(islower(var))
+            if (islower(var))
                 vars[var - 'a'] = top();
             else
                 printf("Blad: brak nazwy zmiennej\n");
             break;
         default:
-            if(islower(type))
+            if (islower(type))
                 push(vars[type - 'a']);
             else if (type == 'V')
                 push(lastval);
@@ -164,7 +168,7 @@ void clear(void)
 void fun(char s[])
 {
     double op;
-    if(!strcmp(s, "sin"))
+    if (!strcmp(s, "sin"))
         push(sin(pop()));
     else if (!strcmp(s, "cos"))
         push(cos(pop()));
@@ -179,7 +183,7 @@ void fun(char s[])
     else if (!strcmp(s, "pow"))
     {
         op = pop();
-        push(pow(pop(),op));
+        push(pow(pop(), op));
     }
     else if (!strcmp(s, "sqrt"))
         push(sqrt(pop()));
@@ -205,7 +209,7 @@ double inv(double f)
 int getop(char s[])
 {
     int i, c;
-    static int buf = -1; 
+    static int buf = -1;
 
     if (buf == -1)
         c = getchar();

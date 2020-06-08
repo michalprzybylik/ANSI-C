@@ -1,3 +1,10 @@
+/*
+Ćwiczenie 3.2. Napisz funkcję escape(s,t), która przepisując tekst z argumentu 
+t do s, zamienia takie znaki, jak znak nowego wiersza czy tabulacji, na czytelne 
+sekwencje specjalne, np. \n i \t. Zastosuj instrukcję switch. Napisz także funkcję 
+działającą w odwrotnym kierunku, tzn. przy kopiowaniu zamieniającą sekwencje 
+specjalne na rzeczywiste znaki.
+*/
 #include <stdio.h>
 
 void escape(char s[], char t[]);

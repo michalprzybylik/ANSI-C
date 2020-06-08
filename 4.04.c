@@ -1,3 +1,8 @@
+/*
+Ćwiczenie 4.4. Wprowadź polecenia: wypisywania liczby z wierzchołka stosu bez 
+zdejmowania jej oraz zamiany miejscami dwóch szczytowych elementów stosu. 
+Dodaj też polecenie czyszczące stos.
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>

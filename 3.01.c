@@ -1,3 +1,9 @@
+/*
+Ćwiczenie 3.1. Nasza funkcja wyszukiwania metodą bisekcji wykonuje dwa sprawdzenia 
+wewnątrz pętli, podczas gdy wystarczyłoby jedno (za cenę zwielokrotnienia 
+testów na zewnątrz). Napisz nową wersję tej funkcji z tylko jednym sprawdzeniem 
+wewnątrz pętli i porównaj czasy wykonania obu wersji.
+*/
 #include <stdio.h>
 #define len 4
 #define s 1
