@@ -1,7 +1,7 @@
 /*
 Ćwiczenie 5.11. Zmień programy entab i detab (napisane jako ćwiczenia w rozdz. 1) tak, aby 
 argumentami ich wywołania mogły być listy punktów tabulacyjnych. Zastosuj
-domyślne punkty tabulacyjne, jeeli nie podano argumentów.
+domyślne punkty tabulacyjne, jeśli nie podano argumentów.
 */
 #include <stdio.h>
 #include <stdlib.h>
