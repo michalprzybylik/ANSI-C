@@ -3,25 +3,25 @@
 
 #define BUFSIZE 100
 
-int buf[BUFSIZE];
-static int bufp = 0;
+static int buf[BUFSIZE];
+static int *bufp = buf;
 
 int getch(void)
 {
-    return (bufp > 0) ? buf[--bufp] : getchar();
+    return (bufp - buf > 0) ? *--bufp : getchar();
 }
 
 void ungetch(int c)
 {
-    if (bufp >= BUFSIZE)
+    if (buf + BUFSIZE <= bufp)
         printf("Blad: ungetch za wiele zwrotow\n");
     else
-        buf[bufp++] = c;
+        *bufp++ = c;
 }
 
-void ungets(char s[])
+void ungets(char *s)
 {
-    int len = strlen(s);
-    while(len > 0)
-        ungetch(s[--len]);
+    char *end = s + strlen(s);
+    while(s < end)
+        ungetch(*--end);
 }
