@@ -1,3 +1,6 @@
+/*
+Zadanie 5.18. Uodpornij program dcl na błędy w danych wejściowych.
+*/
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
