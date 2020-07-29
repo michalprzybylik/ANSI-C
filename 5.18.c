@@ -73,6 +73,8 @@ void dirdcl(void)
     if (tokentype == '(')
     {
         dcl();
+        if (err)
+            return; 
         if (tokentype != ')')
         {
             errmsg("blad: brak nawiasu )\n");
@@ -164,4 +166,7 @@ void errmsg(char *msg)
 void clrerr(void)
 {
     err = false;
+    if (tokentype != '\n') 
+        while(getch() != '\n')
+            ;
 }
