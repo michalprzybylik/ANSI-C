@@ -1,5 +1,6 @@
 void clear(void);
-void enqueue(int n);
-int dequeue(void);
-bool is_empty(void);
+void enque(int n);
+int deque(void);
+bool isempty(void);
 int size(void);
+void prtque(void);

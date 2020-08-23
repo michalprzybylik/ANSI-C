@@ -1,3 +1,8 @@
+/*
+Zadanie 6.01. Nasza wersja funkcji getword nie obsługuje poprawnie znaków 
+podkreślenia, stałych napisowych, komentarzy oraz instrukcji preprocesora. 
+Napisz lepszą wersję tej funkcji.
+*/
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
@@ -123,7 +128,6 @@ int getword(char *word, int lim)
         {
             while(getchar() != '\n')
                 ;
-            ungetc('\n', stdin);
         }
         if (d == '*')
         {

@@ -3,13 +3,13 @@
 
 #define QUEUESIZE 1000
 static int queue[QUEUESIZE];
-static int front = 0;
-static int back = 0;
+static int *front = queue;
+static int *back = queue;
 
 void clear(void);
 void enqueue(int n);
 int dequeue(void);
-bool is_empty(void);
+bool isempty(void);
 int size(void);
 void prtque(void);
 
@@ -32,7 +32,7 @@ int main(void)
                 printf("%d\n", size());
                 break;
             case 'e':
-                printf("%d\n", is_empty());
+                printf("%d\n", isempty());
                 break;
             case 'p':
                 prtque();
@@ -50,10 +50,10 @@ void clear(void)
 
 void enqueue(int n)
 {
-    if ((back + 1) % QUEUESIZE != front)
+    if (queue + (back - queue + 1) % QUEUESIZE != front)
     {
-        back = (back + 1) % QUEUESIZE;
-        queue[back] = n;
+        back = queue + (back - queue + 1) % QUEUESIZE;
+        *back = n;
     }
     else
         printf("Blad: kolejka pelna; nie mozna umiescic %d\n", n);
@@ -63,8 +63,8 @@ int dequeue(void)
 {
     if (front != back)
     {
-        front = (front + 1) % QUEUESIZE;
-        return queue[front];
+        front = queue + (front - queue + 1) % QUEUESIZE;
+        return *front;
     }
     else
     {
@@ -73,25 +73,25 @@ int dequeue(void)
     }
 }
 
-bool is_empty(void)
+bool isempty(void)
 {
     return front == back;
 }
 
 int size(void)
 {
-    return (back - front + QUEUESIZE) % QUEUESIZE;
+    return ((back - queue) - (front - queue) + QUEUESIZE) % QUEUESIZE;
 }
 
 void prtque(void)
 {
-    int i = front + 1;
-    int j = back;
+    int *i = front + 1;
+    int *j = back;
     while (i != j + 1)
     {
-        printf("%d ", queue[i]);
-        if (i >= QUEUESIZE)
-            i = 0;
+        printf("%d ", *i);
+        if (i - queue >= QUEUESIZE)
+            i = queue;
         ++i;
     }
     printf("\n");
