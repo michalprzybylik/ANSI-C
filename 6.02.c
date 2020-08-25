@@ -68,6 +68,7 @@ char *keytab[] =
 
 struct tnode *addtree(struct tnode *, char *);
 void treeprint(struct tnode *);
+void printn(char *s, int n);
 int getword(char*, int);
 void treefree(struct tnode *);
 int readparams(int argc, char *argv[]);
@@ -177,18 +178,23 @@ struct tnode *addtree(struct tnode *ptr, char *str)
     return ptr;
 }
 
+void printn(char *s, int n)
+{
+    putchar('\n');
+    for(char *p = s; *p && p < s + n; ++p)
+        putchar(*p);
+    printf(": ");
+}
+
 void treeprint(struct tnode *ptr)
 {
-    static char prevword[MAXWORD];
-    static char toprint[MAXWORD];
+    static struct tnode *prev = NULL;
     if (ptr != NULL)
     {
         treeprint(ptr->left);
-        strcpy(toprint, ptr->word);
-        toprint[complen] = '\0';
-        if(strncmp(prevword, ptr->word, complen) != 0)
-            printf("\n%s: ", toprint);
-        strcpy(prevword, ptr->word);
+        if((prev == NULL) || (strncmp(prev->word, ptr->word, complen) != 0))
+            printn(ptr->word, complen);
+        prev = ptr;
         printf("%s %d ", ptr->word, ptr->count);
         treeprint(ptr->right);
     }
