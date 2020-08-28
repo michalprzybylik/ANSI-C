@@ -45,7 +45,6 @@ struct lnode *addlist(struct lnode *, int);
 void listprint(struct lnode *);
 void listfree(struct lnode *);
 int getword(char *, int);
-void treefree(struct tnode *);
 bool isignword(char *);
 int binsearch(char *, char *[], int);
 
