@@ -68,3 +68,5 @@ dkms.conf
 .DS_Store
 
 # End of https://www.gitignore.io/api/c,visualstudiocode
+
+test2*
