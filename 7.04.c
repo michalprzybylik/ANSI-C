@@ -1,29 +1,34 @@
 /*
-Zadanie 7.03. Uzupełnij minprintf tak, aby obsługiwała więcej możliwości funkcji 
-printf. 
+Zadanie 7.03. Napisz prywatną wersję funkcji scanf, analogiczną do minprintf 
+z poprzedniego punktu.
 */
 #include <stdio.h>
 #include <stdarg.h>
 #include <stdbool.h>
 #include <ctype.h>
 
+#define BUFLEN 32
 #define MAXFMT 32
 
-void minprintf(char *fmt, ...);
+int minscanf(char *fmt, ...);
 
 int main(void)
 {
-    minprintf("%o %s %f\n", 25, "abc", -434.434);
+    int i;
+    float f;
+    char s[BUFLEN]; 
+    minscanf("%s%f%i", &s, &f, &i);
+    printf("%f %s %i\n", f, s, i);
 }
 
-void minprintf(char *fmt, ...)
+int minscanf(char *fmt, ...)
 {
     va_list ap;
     char *p, *sval, locfmt[MAXFMT];
-    int ival, i;
-    unsigned int uval;
-    double fval;
-    void *pval;
+    int *ival, i;
+    unsigned int *uval;
+    float *dval;
+    int argc = 0;
 
     va_start(ap, fmt);
     for (p = fmt; *p; p++)
@@ -62,36 +67,27 @@ void minprintf(char *fmt, ...)
         {
         case 'd':
         case 'i':
-            ival = va_arg(ap, int);
-            printf(locfmt, ival);
+            ival = va_arg(ap, int *);
+            argc += scanf(locfmt, ival);
             break;
         case 'c':
         case 'u':
-        case 'o':
-        case 'x':
-        case 'X':
-            uval = va_arg(ap, unsigned int);
-            printf(locfmt, uval);
+            uval = va_arg(ap, unsigned int *);
+            argc += scanf(locfmt, uval);
             break;
         case 'f':
-        case 'F':
-        case 'e':
-        case 'E':
-            fval = va_arg(ap, double);
-            printf(locfmt, fval);
+            dval = va_arg(ap, float *);
+            argc += scanf(locfmt, dval);
             break;
         case 's':
             sval = va_arg(ap, char *);
-            printf(locfmt, sval);
-            break;
-        case 'p':
-            pval = va_arg(ap, void *);
-            printf(locfmt, pval);
+            argc += scanf(locfmt, sval);
             break;
         default:
-            putchar(*p);
             break;
         }
+        i = 0;
     }
     va_end(ap);
+    return argc;
 }
