@@ -7,7 +7,7 @@ struct lnode *lalloc(void)
     return (struct lnode *)malloc(sizeof(struct lnode));
 }
 
-struct lnode *addlist(struct lnode *ptr, int val)
+struct lnode *appendlist(struct lnode *ptr, int val)
 {
     struct lnode *head = ptr;
     struct lnode *prev = NULL;
@@ -24,6 +24,15 @@ struct lnode *addlist(struct lnode *ptr, int val)
         prev->next = ptr;
     else
         head = ptr;
+    return head;
+}
+
+struct lnode *addflist(struct lnode *ptr, int val)
+{
+    struct lnode *head;
+    head = lalloc();
+    head->val = val;
+    head->next = ptr;
     return head;
 }
 
