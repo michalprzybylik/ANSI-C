@@ -1,5 +1,9 @@
 /*
-Ćwiczenie 7.7. Zmień program wyszukujący według wzorca (z rozdz. 5) tak, aby przyjmował dane wejściowe z zestawu nazwanych polików lub ze standardowego wejścia, jeśli w argumentach wywołania nie podano żadnej nazwy pliku. Czy razem ze znalezionym wierszem trzeba wypisywać nazwę pliku, w ktróym go znaleziono.
+Ćwiczenie 7.7. Zmień program wyszukujący według wzorca (z rozdz. 5) tak, aby 
+przyjmował dane wejściowe z zestawu nazwanych polików lub ze standardowego 
+wejścia, jeśli w argumentach wywołania nie podano żadnej nazwy pliku. Czy 
+razem ze znalezionym wierszem trzeba wypisywać nazwę pliku, w którym go 
+znaleziono.
 */
 #include <stdio.h>
 #include <string.h>
@@ -76,6 +80,11 @@ int findpatfile(char *pattern, char *fname, bool number, bool except)
             printf("%s", line);
             found++;
         }
+    }
+    if(ferror(stdout))
+    {
+        fprintf(stderr, "findpatfile: blad pisania do stdout\n");
+        exit(2);        
     }
     fclose(ifp);
     return found;
