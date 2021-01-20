@@ -12,7 +12,8 @@ struct lnode *appendlist(struct lnode *ptr, int val)
     struct lnode *head = ptr;
     struct lnode *prev = NULL;
 
-    ptr = lalloc();
+    if ((ptr = lalloc()) == NULL)
+        return NULL;
     ptr->val = val;
     ptr->next = NULL;
     while(ptr)
@@ -24,13 +25,15 @@ struct lnode *appendlist(struct lnode *ptr, int val)
         prev->next = ptr;
     else
         head = ptr;
-    return head;
+    return ptr;
 }
 
 struct lnode *addflist(struct lnode *ptr, int val)
 {
     struct lnode *head;
-    head = lalloc();
+    
+    if ((head = lalloc()) == NULL)
+        return ptr;
     head->val = val;
     head->next = ptr;
     return head;
@@ -43,14 +46,11 @@ void listprint(struct lnode *ptr)
     printf("\n");
 }
 
-
 void listfree(struct lnode *ptr)
 {
-    struct lnode *tmp = NULL;
-    while(ptr)
+    for (struct lnode *p = ptr; p; p = ptr)
     {
-        tmp = ptr;
-        ptr = ptr->next;
-        free(tmp);
+        ptr = p->next;
+        free(p);
     }
 }

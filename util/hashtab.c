@@ -2,7 +2,7 @@
 #include <string.h>
 #include "hashtab.h"
 
-static struct nlist *hashtab[] = {NULL};
+static struct nlist *hashtab[HASHSIZE];
 
 unsigned int hash(char *s)
 {
