@@ -1,11 +1,17 @@
-struct lnode
+#include <stdbool.h>
+
+typedef struct lnode
 {
     int val;
     struct lnode *next;
-};
+} Listnode;
 
-struct lnode *lalloc(void);
-struct lnode *appendlist(struct lnode *, int);
-struct lnode *addflist(struct lnode *, int);
-void listprint(struct lnode *);
-void listfree(struct lnode *);
+typedef Listnode* Nodeptr;
+
+Nodeptr nodealloc(void);
+Nodeptr appendlist(Nodeptr*, int);
+Nodeptr addlist(Nodeptr*, int);
+Nodeptr findlist(Nodeptr, int); 
+void printlist(Nodeptr);
+void removenode(Nodeptr*, int);
+void freelist(Nodeptr);

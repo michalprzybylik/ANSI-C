@@ -2,53 +2,68 @@
 #include <stdio.h>
 #include "list.h"
 
-struct lnode *lalloc(void)
+Nodeptr nodealloc(void)
 {
-    return (struct lnode *)malloc(sizeof(struct lnode));
+    return (Nodeptr)malloc(sizeof(Listnode));
 }
 
-struct lnode *appendlist(struct lnode *ptr, int val)
+Nodeptr appendlist(Nodeptr *ptr, int val)
 {
-    struct lnode *head = ptr;
-    struct lnode *prev = NULL;
+    while(*ptr)
+        ptr = &(*ptr)->next;
 
-    if ((ptr = lalloc()) == NULL)
+    if ((*ptr = nodealloc()) == NULL)
         return NULL;
-    ptr->val = val;
-    ptr->next = NULL;
-    while(ptr)
-    {
-        prev = ptr; 
-        ptr = ptr->next;
-    }
-    if (prev)
-        prev->next = ptr;
-    else
-        head = ptr;
-    return ptr;
+    (*ptr)->val = val;
+    (*ptr)->next = NULL;
+    return *ptr;
 }
 
-struct lnode *addflist(struct lnode *ptr, int val)
+Nodeptr addlist(Nodeptr *ptr, int val)
 {
-    struct lnode *head;
-    
-    if ((head = lalloc()) == NULL)
-        return ptr;
+    Nodeptr head;
+
+    if ((head = nodealloc()) == NULL)
+        return NULL;
     head->val = val;
-    head->next = ptr;
-    return head;
+    head->next = *ptr;
+    *ptr = head;
+    return *ptr;
 }
 
-void listprint(struct lnode *ptr)
+Nodeptr findlist(Nodeptr ptr, int val)
 {
-    for(; ptr ; ptr = ptr->next)
+    for(; ptr; ptr = ptr->next)
+        if (ptr->val == val)
+            return ptr;
+    return NULL;
+}
+
+void printlist(Nodeptr ptr)
+{
+    for (; ptr; ptr = ptr->next)
         printf("%d ", ptr->val);
     printf("\n");
 }
 
-void listfree(struct lnode *ptr)
+void removenode(Nodeptr *ptr, int val)
 {
-    for (struct lnode *p = ptr; p; p = ptr)
+    Nodeptr tmp = NULL;
+
+    while ((*ptr) && (*ptr)->val != val)
+        ptr = &(*ptr)->next;
+
+    if (*ptr)
+    {
+        tmp = *ptr;
+        *ptr = (*ptr)->next;
+        free(tmp);
+    }
+}
+
+void freelist(Nodeptr ptr)
+{
+    for (Nodeptr p = ptr; p; p = ptr)
     {
         ptr = p->next;
         free(p);
