@@ -7,5 +7,8 @@ struct tnode
 
 struct tnode *talloc(void);
 struct tnode *addtree(struct tnode *ptr, int val);
-void treeprint(struct tnode *ptr);
-void treefree(struct tnode *ptr);
+void printtree(struct tnode *ptr);
+void freetree(struct tnode *ptr);
+struct tnode *searchtree(struct tnode *ptr, int val);
+struct tnode *mintnode(struct tnode *ptr);
+struct tnode *maxtnode(struct tnode *ptr);

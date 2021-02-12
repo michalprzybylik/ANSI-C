@@ -22,7 +22,7 @@ struct tnode *addtree(struct tnode *ptr, int val)
     return ptr;
 }
 
-void treeprint(struct tnode *ptr)
+void printtree(struct tnode *ptr)
 {
     if (ptr != NULL)
     {
@@ -32,7 +32,7 @@ void treeprint(struct tnode *ptr)
     }
 }
 
-void treefree(struct tnode *ptr)
+void freetree(struct tnode *ptr)
 {
     if (ptr != NULL)
     {
@@ -40,4 +40,24 @@ void treefree(struct tnode *ptr)
         treefree(ptr->right);
     }
     free(ptr);
+}
+
+struct tnode *searchtree(struct tnode *ptr, int val)
+{
+    if (ptr == NULL || val == ptr->val)
+        return ptr;
+    else if (val < ptr->val)
+        return searchtree(ptr->left, val);
+    else
+        return searchtree(ptr->right, val);
+}
+
+struct tnode *mintnode(struct tnode *ptr)
+{
+    return (ptr->left) ? mintnode(ptr->left) : ptr;
+}
+
+struct tnode *maxtnode(struct tnode *ptr)
+{
+    return (ptr->right) ? mintnode(ptr->right) : ptr;
 }
